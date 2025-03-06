@@ -17,6 +17,9 @@
        - tiene que usar memoria adicional para cada llamada recursiva. donde n sera el numero de llamadas
        - en caso de que n tome valores grandes causara el desbordamiento de la pila como seria calcular el factorial de 200.000
 ----------------------------------------------------------------------------------------------------------------------------------------
+![image](https://github.com/user-attachments/assets/480fee56-5720-4ce5-b69d-602f5efdf10d)
+
+----------------------------------------------------------------------------------------------------------------------------------------
 3) CONCLUSIONES
    - el enfoque iterativo es mejor en cuanto a terminos de tiempo y memoria. sobre todo en valores grandes de n
    - 
