@@ -27,6 +27,6 @@ int main() {
 
 -------------------------------------------------------------------------------------
 EJEMPLO
-    Ingrese un número para calcular su factorial: 5
+Ingrese un número para calcular su factorial: 5
 Resultado recursivo: 120
 Tiempo recursivo: 0.000002 segundos
