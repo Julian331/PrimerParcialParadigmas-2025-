@@ -24,3 +24,9 @@ int main() {
 
     return 0;
 }
+
+-------------------------------------------------------------------------------------
+EJEMPLO
+    Ingrese un número para calcular su factorial: 5
+Resultado recursivo: 120
+Tiempo recursivo: 0.000002 segundos
