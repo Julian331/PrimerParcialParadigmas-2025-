@@ -10,7 +10,7 @@ def bubble_sort_students(students):
     n = len(students)
     for i in range(n - 1):
         for j in range(n - 1 - i):
-            # Comparar por calificación (descendente)
+            # Comparar por calificacion (descendente)
             if students[j][1] < students[j + 1][1] or \
                (students[j][1] == students[j + 1][1] and students[j][0] > students[j + 1][0]):
                 # Intercambiar si es necesario
@@ -25,7 +25,7 @@ students = [
     ("Humba", 90)
 ]
 
-#Ordenar la lista
+#ordena la lista
 bubble_sort_students(students)
 
 for student in students:
