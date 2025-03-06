@@ -26,3 +26,8 @@ int main() {
     // Mostramos los resultados
     printf("\nResultado iterativo: %llu\n", resultado_iterativo);
     printf("Tiempo iterativo: %f segundos\n", tiempo_iterativo);
+--------------------------------------------------------------------------------------------
+EJEMPLO
+Ingrese un número para calcular su factorial: 5
+Resultado iterativo: 120
+Tiempo iterativo: 0.000001 segundos
