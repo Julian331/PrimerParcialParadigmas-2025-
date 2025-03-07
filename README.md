@@ -7,3 +7,8 @@
 
 # * Descripcion *  
 Este repositorio contiene soluciones y analisis relacionados con el **Primer Parcial** de la materia **Paradigmas de Programacion**. 
+
+# * Contenido *
+| **Punto 1:**
+| **Punto 2:**
+| **Punto 3:**
