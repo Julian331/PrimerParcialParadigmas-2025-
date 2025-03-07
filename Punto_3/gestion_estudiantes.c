@@ -116,7 +116,7 @@ void eliminarEstudianteConReporte(Estudiante* estudiante) {
 // Función principal
 int main() {
     // Ejemplo de calificaciones
-    int calificaciones[] = {85, 90, 78};
+    int calificaciones[] = {3.0, 4.2, 3.5};
     
     // Agregar un estudiante y mostrar el informe de memoria
     agregarEstudianteConReporte("Carlos", "Gomez", 20, "12345678", calificaciones, 3);
