@@ -1,6 +1,6 @@
 ### Mejoras mediante el paradigma funcional
 #### 1 Evaluacion perezosa (Lazy evaluation)
- - ** paradigma funcional**
+ - **paradigma funcional**
      - La evaluacion perezosa retrasa los calculos hasta que realmente se necesitan Esto es util para trabajar con secuencias infinitas o calculos costosos
    - **Ejemplo en Haskell**
      ```haskell
@@ -9,7 +9,7 @@
      ```
 
 #### 2 Inmutabilidad
-   - ** paradigma funcional**
+   - **paradigma funcional**
      - En el paradigma funcional los datos son inmutables,hace que el codigo sea mas predecible y facil 
    - **Ejemplo en Haskell**
      ```haskell
