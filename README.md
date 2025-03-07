@@ -32,8 +32,8 @@ Hay una lista de nombres de estudiantes junto con sus respectivas calificaciones
 | **Punto 3:**
 C
 
--
--
+- gestion_estudiantes.c
+- informe_comparativo.md
 
 Desarrollamos un programa en C que gestiona de forma dinamica y eficiente la memoria que se utilizo para almacenar registros de estudiantes, asegurando que se optimice el espacio ocupado y se evite el desperdicio innecesario
 
