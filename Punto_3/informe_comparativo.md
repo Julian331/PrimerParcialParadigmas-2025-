@@ -25,7 +25,7 @@ La tabla muestra una optimización del código en términos de eficiencia en el 
   - La  memoria fija puede causar fragmentacion interna, donde necesita más espacio del necesario dentro de bloques de memoria.
   - Esto ocurre porque los arrays estáticos no se ajustan al tamaño real de los datos.
 
-- **Con optimización**:
+- **Con optimizacion**:
   - La asignacion dinamica ajustada minimiza la fragmentacion, ya que se asigna exactamente al tamaño requerido.
   - no hay espacio desperdiciado.
 
@@ -37,14 +37,14 @@ La tabla muestra una optimización del código en términos de eficiencia en el 
   - Ejemplo: El programa puede tardar **10 ms** en ejecutar operaciones como agregar o eliminar estudiantes.
 
 - **Con optimizacion**:
-  - El tiempo de ejecución se reduce a la menor cantidad de memoria manejada y la eficiencia en las operaciones.
+  - El tiempo de ejecucion se reduce a la menor cantidad de memoria manejada y la eficiencia en las operaciones.
   - Ejemplo: El programa puede tardar **8 ms** en realizar las mismas operaciones.
 
 ---
 
 ### Conclusion final
-- La optimización no solo reduce el uso de memoria, sino que también mejora la eficiencia del programa al evitar el desperdicio de recursos.
-- La fragmentación se quita al asignar memoria de manera dinámica 
-- El tiempo de ejecución  varia dependiendo del sistema
-- la optimización tiende a mejorar el rendimiento
+- La optimizacion no solo reduce el uso de memoria, sino que tambien mejora la eficiencia del programa al evitar el desperdicio de recursos.
+- La fragmentacion se quita al asignar memoria de manera dinamica 
+- El tiempo de ejecucion  varia dependiendo del sistema
+- la optimizacion tiende a mejorar el rendimiento
 
