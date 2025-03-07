@@ -6,7 +6,7 @@
 - **Periodo:** 2025-1
 
 # * Descripcion *  
-Este repositorio contiene soluciones y analisis relacionados con el **Primer Parcial** de la materia **Paradigmas de Programacion**. 
+Este repositorio contiene soluciones y analisis relacionados con el **Primer Parcial** de la materia **Paradigmas de Programacion**
 
 # * Contenido *
 | **Punto 1:**
