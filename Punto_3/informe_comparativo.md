@@ -7,100 +7,58 @@ La tabla muestra una optimización del código en términos de eficiencia en el 
 | **Tiempo de ejecución**     | 10 ms (ejemplo)                | 8 ms (ejemplo)                 |
 
 
-Explicación Detallada
-1. Memoria Utilizada Total
-Sin Optimización
-Se utilizan estructuras con tamaños fijos, como arrays estáticos para nombres, apellidos y calificaciones.
+### Explicación de la Tabla Comparativa
 
-Por ejemplo:
+#### 1. **Memoria Utilizada Total**
+- **Sin optimización**:
+  - Se utilizan estructuras con tamaños fijos, como arrays estáticos para nombres, apellidos y calificaciones.
+  - Esto puede llevar a un uso excesivo de memoria, ya que se reserva espacio para el peor caso (por ejemplo, 50 caracteres para el nombre, aunque solo se usen 6).
+  - Ejemplo: Si se usan arrays estáticos, la memoria total puede ser de **200 bytes** (dependiendo de los tamaños fijos definidos).
 
-Un array de 50 caracteres para el nombre.
+- **Con optimización**:
+  - Se asigna memoria dinámicamente, reservando solo el espacio necesario para cada campo (nombre, apellido, ID y calificaciones).
+  - Esto reduce significativamente el uso de memoria, ya que no se desperdicia espacio.
+  - Ejemplo: Si el nombre tiene 6 caracteres, el apellido 5, el ID 8 y hay 3 calificaciones, la memoria total puede ser de **128 bytes**.
 
-Un array de 50 caracteres para el apellido.
+---
 
-Un array de 10 enteros para las calificaciones.
+#### 2. **Fragmentación Detectada**
+- **Sin optimización**:
+  - La asignación de memoria fija puede causar **fragmentación interna**, donde se reserva más espacio del necesario dentro de bloques de memoria.
+  - Esto ocurre porque los arrays estáticos no se ajustan al tamaño real de los datos.
 
-Esto lleva a un uso excesivo de memoria, ya que se reserva espacio para el peor caso, incluso si no se utiliza completamente.
+- **Con optimización**:
+  - La asignación dinámica ajustada minimiza la fragmentación, ya que cada bloque de memoria se asigna exactamente al tamaño requerido.
+  - Esto resulta en una **fragmentación baja o nula**, ya que no hay espacio desperdiciado.
 
-Ejemplo: Si el nombre solo tiene 6 caracteres, se desperdician 44 bytes.
+---
 
-Con Optimización
-Se asigna memoria dinámicamente, ajustándose al tamaño exacto de los datos.
+#### 3. **Tiempo de Ejecución**
+- **Sin optimización**:
+  - El tiempo de ejecución puede ser mayor debido al manejo de estructuras más grandes y menos eficientes.
+  - Ejemplo: El programa puede tardar **10 ms** en ejecutar operaciones como agregar o eliminar estudiantes.
 
-Por ejemplo:
+- **Con optimización**:
+  - El tiempo de ejecución se reduce ligeramente debido a la menor cantidad de memoria manejada y la eficiencia en las operaciones de asignación y liberación.
+  - Ejemplo: El programa puede tardar **8 ms** en realizar las mismas operaciones.
 
-Si el nombre tiene 6 caracteres, se asignan solo 6 bytes (+1 para el carácter nulo).
+---
 
-Si hay 3 calificaciones, se asignan solo 3 enteros (12 bytes en sistemas de 32 bits).
+### Ejemplo de Cálculo de Memoria
 
-Esto reduce significativamente el uso de memoria, ya que no se reserva espacio innecesario.
+#### Sin optimización:
+- Supongamos que se usa un array estático de 50 caracteres para el nombre, 50 para el apellido, 10 para el ID y un array fijo de 10 calificaciones.
+- Memoria total: `50 (nombre) + 50 (apellido) + 10 (ID) + (10 * 4) (calificaciones) = 140 bytes` (sin contar el relleno y la estructura base).
 
-Ejemplo: Si el nombre tiene 6 caracteres, el apellido 5, el ID 8 y hay 3 calificaciones, la memoria total sería:
+#### Con optimización:
+- Si el nombre tiene 6 caracteres, el apellido 5, el ID 8 y hay 3 calificaciones:
+- Memoria total: `6 (nombre) + 5 (apellido) + 8 (ID) + (3 * 4) (calificaciones) = 31 bytes` (más la estructura base).
 
-Nombre: 7 bytes (6 + 1).
+---
 
-Apellido: 6 bytes (5 + 1).
+### Notas Adicionales
+- La optimización no solo reduce el uso de memoria, sino que también mejora la eficiencia del programa al evitar el desperdicio de recursos.
+- La fragmentación se minimiza al asignar memoria de manera dinámica y liberarla correctamente.
+- El tiempo de ejecución puede variar dependiendo del sistema, pero en general, la optimización tiende a mejorar el rendimiento.
 
-ID: 9 bytes (8 + 1).
-
-Calificaciones: 12 bytes (3 * 4).
-
-Total: 34 bytes (más la estructura base).
-
-2. Fragmentación Detectada
-Sin Optimización
-La asignación de memoria fija puede causar fragmentación interna.
-
-Esto ocurre cuando se reserva más memoria de la necesaria, dejando espacios no utilizados dentro de los bloques asignados.
-
-Por ejemplo, si se reservan 50 bytes para un nombre pero solo se usan 10, los 40 bytes restantes se desperdician.
-
-Con Optimización
-La asignación dinámica ajustada minimiza la fragmentación.
-
-Cada bloque de memoria se asigna exactamente al tamaño necesario, evitando el desperdicio.
-
-Además, al liberar la memoria correctamente, se reduce la fragmentación externa.
-
-3. Tiempo de Ejecución
-Sin Optimización
-El tiempo de ejecución puede ser mayor debido al manejo de estructuras más grandes y menos eficientes.
-
-Por ejemplo, copiar y manipular arrays estáticos de tamaño fijo consume más recursos.
-
-Con Optimización
-El tiempo de ejecución se reduce ligeramente debido a:
-
-Menor cantidad de memoria manejada.
-
-Operaciones de asignación y liberación más eficientes.
-
-Menos sobrecarga en la manipulación de datos.
-
-Ejemplo de Cálculo
-Sin Optimización
-Supongamos:
-
-Nombre: Array de 50 caracteres (50 bytes).
-
-Apellido: Array de 50 caracteres (50 bytes).
-
-ID: Array de 10 caracteres (10 bytes).
-
-Calificaciones: Array de 10 enteros (40 bytes).
-
-Memoria total: 50 + 50 + 10 + 40 = 150 bytes.
-
-Con Optimización
-Supongamos:
-
-Nombre: 6 caracteres (7 bytes).
-
-Apellido: 5 caracteres (6 bytes).
-
-ID: 8 caracteres (9 bytes).
-
-Calificaciones: 3 enteros (12 bytes).
-
-Memoria total: 7 + 6 + 9 + 12 = 34 bytes.
-
+Esta tabla es un ejemplo genérico, y los valores exactos pueden variar según la implementación específica y los datos de entrada.
