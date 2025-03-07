@@ -1,10 +1,11 @@
+# **Análisis de la Comparación Antes vs. Después**
 La tabla muestra una optimización del código en términos de eficiencia en el uso de memoria, manejo de errores, cálculos de recursos y organización de la salida de datos. A continuación, se desglosan los cambios y mejoras realizadas:
 | Métrica                     | Sin Optimización               | Con Optimización               |
 |-----------------------------|--------------------------------|--------------------------------|
 | **Memoria utilizada total** | 200 bytes (ejemplo)            | 128 bytes (ejemplo)            |
 | **Fragmentación detectada** | Alta (debido a asignaciones fijas y relleno) | Baja o nula (asignación dinámica ajustada) |
 | **Tiempo de ejecución**     | 10 ms (ejemplo)                | 8 ms (ejemplo)                 |
-# **Análisis de la Comparación Antes vs. Después**
+
 
 ## **1. Uso de memoria en edad**
 - **Antes:** `unsigned short edad; (16 bits)`
