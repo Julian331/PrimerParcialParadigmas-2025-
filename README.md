@@ -1,4 +1,4 @@
-#    * Primer Parcial - Paradigmas de Programación (2025-1) *
+#    * Primer Parcial - Paradigmas de Programacion (2025-1) *
 
 - **Nombres:** Julian Caro, Angel Robles
 - **Codigos:** 
