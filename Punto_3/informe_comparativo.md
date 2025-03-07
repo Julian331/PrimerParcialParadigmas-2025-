@@ -7,50 +7,100 @@ La tabla muestra una optimización del código en términos de eficiencia en el 
 | **Tiempo de ejecución**     | 10 ms (ejemplo)                | 8 ms (ejemplo)                 |
 
 
-## **1. Uso de memoria en edad**
-- **Antes:** `unsigned short edad; (16 bits)`
-- **Después:** `unsigned short edad : 7; (7 bits)`
-- **Mejora:** Se ha utilizado un **bitfield**, lo que reduce el uso de memoria de 16 bits a solo 7 bits, optimizando el almacenamiento cuando la variable no necesita un rango más amplio.
+Explicación Detallada
+1. Memoria Utilizada Total
+Sin Optimización
+Se utilizan estructuras con tamaños fijos, como arrays estáticos para nombres, apellidos y calificaciones.
 
-## **2. Almacenamiento de ID**
-- **Antes:** `char id[15];` (fijo, 15 bytes)
-- **Después:** `char *ID;` (dinámico con `strdup`)
-- **Mejora:** Se ha eliminado la asignación estática de 15 bytes en favor de una asignación dinámica con `strdup`, lo que **reduce el desperdicio de memoria** y permite manejar IDs de diferentes longitudes según sea necesario.
+Por ejemplo:
 
-## **3. Tipo de `num_calificaciones`**
-- **Antes:** `int num_calificaciones;`
-- **Después:** `size_t num_calificaciones;`
-- **Mejora:** Se ha cambiado el tipo `int` por `size_t`, lo que **hace el código más seguro y portátil**, ya que `size_t` está diseñado para representar tamaños de memoria y es independiente de la arquitectura del procesador.
+Un array de 50 caracteres para el nombre.
 
-## **4. Copia de calificaciones**
-- **Antes:** Copia manual con `for`
-- **Después:** Uso de `memcpy`
-- **Mejora:** Se ha sustituido la copia manual por `memcpy`, una función optimizada de la biblioteca estándar de C. Esto **mejora la eficiencia** al copiar datos en memoria, especialmente en estructuras grandes.
+Un array de 50 caracteres para el apellido.
 
-## **5. Manejo de errores**
-- **Antes:** No verifica `strdup`
-- **Después:** Verifica todas las asignaciones
-- **Mejora:** Se ha agregado una validación de `strdup`, lo que evita fallos en caso de que la asignación falle por falta de memoria. Esto **aumenta la seguridad** y previene posibles errores de segmentación.
+Un array de 10 enteros para las calificaciones.
 
-## **6. Cálculo de memoria usada**
-- **Antes:** No existe
-- **Después:** Se implementa `calcular_memoria_utilizada()`
-- **Mejora:** Se ha añadido una función específica para calcular la memoria utilizada, permitiendo **un mejor análisis del uso de recursos** y facilitando la optimización del programa.
+Esto lleva a un uso excesivo de memoria, ya que se reserva espacio para el peor caso, incluso si no se utiliza completamente.
 
-## **7. Impresión de datos**
-- **Antes:** Mensaje básico en `main`
-- **Después:** Función `imprimir_estudiante()`
-- **Mejora:** Se ha modularizado la impresión de datos en una función separada, lo que mejora la **organización del código** y facilita la reutilización de la función en diferentes partes del programa.
+Ejemplo: Si el nombre solo tiene 6 caracteres, se desperdician 44 bytes.
 
----
+Con Optimización
+Se asigna memoria dinámicamente, ajustándose al tamaño exacto de los datos.
 
-## **Conclusión**
-Las optimizaciones implementadas en el código mejoran su **eficiencia, seguridad y organización**. Los principales beneficios incluyen:
+Por ejemplo:
 
-- **Menor consumo de memoria** mediante el uso de `bitfields`, asignación dinámica y estructuras más adecuadas (`size_t` en lugar de `int`).
-- **Mayor eficiencia** en la manipulación de datos (`memcpy` en lugar de `for`).
-- **Mayor seguridad** al incluir verificaciones de errores en la asignación de memoria.
-- **Mejor mantenimiento y modularización** al agregar funciones específicas para impresión y cálculo de memoria.
+Si el nombre tiene 6 caracteres, se asignan solo 6 bytes (+1 para el carácter nulo).
 
-Estas optimizaciones son especialmente útiles en entornos donde los **recursos son limitados**, como sistemas embebidos o aplicaciones de alto rendimiento.
+Si hay 3 calificaciones, se asignan solo 3 enteros (12 bytes en sistemas de 32 bits).
+
+Esto reduce significativamente el uso de memoria, ya que no se reserva espacio innecesario.
+
+Ejemplo: Si el nombre tiene 6 caracteres, el apellido 5, el ID 8 y hay 3 calificaciones, la memoria total sería:
+
+Nombre: 7 bytes (6 + 1).
+
+Apellido: 6 bytes (5 + 1).
+
+ID: 9 bytes (8 + 1).
+
+Calificaciones: 12 bytes (3 * 4).
+
+Total: 34 bytes (más la estructura base).
+
+2. Fragmentación Detectada
+Sin Optimización
+La asignación de memoria fija puede causar fragmentación interna.
+
+Esto ocurre cuando se reserva más memoria de la necesaria, dejando espacios no utilizados dentro de los bloques asignados.
+
+Por ejemplo, si se reservan 50 bytes para un nombre pero solo se usan 10, los 40 bytes restantes se desperdician.
+
+Con Optimización
+La asignación dinámica ajustada minimiza la fragmentación.
+
+Cada bloque de memoria se asigna exactamente al tamaño necesario, evitando el desperdicio.
+
+Además, al liberar la memoria correctamente, se reduce la fragmentación externa.
+
+3. Tiempo de Ejecución
+Sin Optimización
+El tiempo de ejecución puede ser mayor debido al manejo de estructuras más grandes y menos eficientes.
+
+Por ejemplo, copiar y manipular arrays estáticos de tamaño fijo consume más recursos.
+
+Con Optimización
+El tiempo de ejecución se reduce ligeramente debido a:
+
+Menor cantidad de memoria manejada.
+
+Operaciones de asignación y liberación más eficientes.
+
+Menos sobrecarga en la manipulación de datos.
+
+Ejemplo de Cálculo
+Sin Optimización
+Supongamos:
+
+Nombre: Array de 50 caracteres (50 bytes).
+
+Apellido: Array de 50 caracteres (50 bytes).
+
+ID: Array de 10 caracteres (10 bytes).
+
+Calificaciones: Array de 10 enteros (40 bytes).
+
+Memoria total: 50 + 50 + 10 + 40 = 150 bytes.
+
+Con Optimización
+Supongamos:
+
+Nombre: 6 caracteres (7 bytes).
+
+Apellido: 5 caracteres (6 bytes).
+
+ID: 8 caracteres (9 bytes).
+
+Calificaciones: 3 enteros (12 bytes).
+
+Memoria total: 7 + 6 + 9 + 12 = 34 bytes.
 
