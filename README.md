@@ -10,6 +10,9 @@ Este repositorio contiene soluciones y analisis relacionados con el **Primer Par
 
 # * Contenido *
 | **Punto 1:**
+C
+
+Contiene el desarrollo de un ejercicio practico de implementar el calculo del factorial de un numero entero utilizando dos enfoques diferentes en el lenguaje de programacion se realizo una comparacion de desempeño entre ambas implementaciones y un analisis sobre como el uso del paradigma funcional podría mejorar la eficiencia de este calculo
 
 
 | **Punto 2:**
