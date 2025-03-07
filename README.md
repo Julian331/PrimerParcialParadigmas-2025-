@@ -21,4 +21,7 @@ Python, Haskell
 Hay una lista de nombres de estudiantes junto con sus respectivas calificaciones. El objetivo es ordenar esta lista en orden descendente segun las calificaciones, de modo que sea posible identificar facilmente quien obtuvo las mejores notas. En caso de que dos estudiantes tengan la misma calificacion se deben ordenarse alfabeticamente por su nombre
 
 | **Punto 3:**
+C
+
+Desarrollamos un programa en C que gestiona de forma dinamica y eficiente la memoria que se utilizo para almacenar registros de estudiantes, asegurando que se optimice el espacio ocupado y se evite el desperdicio innecesario
 
