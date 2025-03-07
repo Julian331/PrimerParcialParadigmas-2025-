@@ -18,18 +18,8 @@
        - en caso de que n tome valores grandes causara el desbordamiento de la pila como seria calcular el factorial de 200.000
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-|Aspecto||Iterativo||Recursivo|
-|--------|---------|-------------|
-|Tiempo de ejecución|-------|Más rápido (menos sobrecarga)|------|Más lento (sobrecarga de llamadas)|
-|--------------------|------|------------------------------|------|--------------------------|
-|Consumo de memoria||O(1) (constante)||O(n) (depende de la profundidad)|
-|-------------------|-----------------|----------------------------------------------------|
-|Facilidad de código||Menos intuitivo para problemas recursivos||Más intuitivo y claro|
-|--------------------|------------------------------------------|--------------------------|
-|Escalabilidad||Escala mejor para valores grandes	No escala||bien para valores grandes|
-|--------------|----------------------------------------------|----------------------------|
-|Riesgo de stack overflow||No aplica||Sí, para valores grandes de n|
-|-------------------------|----------|-----------------------------------------------------|
+![image](https://github.com/user-attachments/assets/7fb3bca0-2329-4360-8bd7-cab62f9f5c7d)
+
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
