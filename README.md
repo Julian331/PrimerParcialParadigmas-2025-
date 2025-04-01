@@ -78,7 +78,7 @@ Seleccione una opción: 2
 ID: 1, Nombre: Laptop HP, Cantidad: 5, Precio: $1200.00, Valor Total: $6000.00, IVA: $1140.00
 
 
-=== SISTEMA DE GESTIÓN DE INVENTARIO ===
+= SISTEMA DE GESTIÓN DE INVENTARIO =
 1. Agregar producto
 2. Listar productos
 3. Actualizar producto
@@ -87,8 +87,8 @@ ID: 1, Nombre: Laptop HP, Cantidad: 5, Precio: $1200.00, Valor Total: $6000.00, 
 6. Salir
 Seleccione una opción: 5
 
-=== RESUMEN FINANCIERO ===
+= RESUMEN FINANCIERO =
 Valor total del inventario: $6000.00
 IVA total (19%): $1140.00
 Total con IVA: $7140.00
-=========================
+
