@@ -14,7 +14,7 @@ Clase Producto: Representa cada ítem en el inventario con sus atributos privado
 
 Clase Inventario: Gestiona la colección de productos, proporcionando operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y funcionalidades adicionales como cálculos financieros.
 
-| ** Principios de POO Aplicados **
+#** Principios de POO Aplicados **
 Encapsulamiento: Todos los atributos de la clase Producto son privados y solo se accede a ellos mediante métodos públicos (getters y setters).
 
 Abstracción: Las clases representan conceptos del mundo real (Producto, Inventario) con sus comportamientos asociados.
@@ -23,7 +23,8 @@ Modularidad: Cada clase tiene una responsabilidad bien definida y separada.
 
 Reutilización: Los métodos de cálculo (valor total, IVA) están diseñados para ser usados tanto a nivel de producto individual como de inventario completo.
 
-| **Decisiones de Diseño**
+# **Decisiones de Diseño**
+
 Generación automática de IDs: El inventario asigna IDs secuenciales automáticamente para evitar duplicados.
 
 Validación de datos: Se incluyen validaciones básicas para evitar valores negativos o inválidos.
@@ -34,7 +35,8 @@ Formato de salida: Los valores monetarios se muestran con 2 decimales para mejor
 
 Manejo de errores: Se incluyen mensajes claros cuando ocurren errores (producto no encontrado, datos inválidos).
 
-| **Ejecución del Programa**
+# **Ejecución del Programa**
+
 El programa muestra un menú interactivo con las siguientes opciones:
 
 Agregar producto: Solicita nombre, cantidad y precio, y lo añade al inventario.
