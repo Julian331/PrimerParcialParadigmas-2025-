@@ -1,0 +1,242 @@
+import java.util.Scanner
+import kotlin.system.exitProcess
+
+/**
+ * Clase que representa un producto en el inventario.
+ * @property id Identificador único del producto
+ * @property nombre Nombre del producto
+ * @property cantidad Cantidad disponible en inventario
+ * @property precio Precio unitario del producto
+ */
+class Producto(
+    private val id: Int,
+    private var nombre: String,
+    private var cantidad: Int,
+    private var precio: Double
+) {
+    // Métodos para acceder a los atributos privados (getters)
+    fun getId(): Int = id
+    fun getNombre(): String = nombre
+    fun getCantidad(): Int = cantidad
+    fun getPrecio(): Double = precio
+
+    // Métodos para modificar los atributos (setters)
+    fun setNombre(nuevoNombre: String) {
+        nombre = nuevoNombre
+    }
+
+    fun setCantidad(nuevaCantidad: Int) {
+        cantidad = nuevaCantidad
+    }
+
+    fun setPrecio(nuevoPrecio: Double) {
+        precio = nuevoPrecio
+    }
+
+    /**
+     * Calcula el valor total del producto (precio * cantidad)
+     * @return Valor total del producto
+     */
+    fun calcularValorTotal(): Double = precio * cantidad
+
+    /**
+     * Calcula el IVA (19%) del valor total del producto
+     * @return Valor del IVA
+     */
+    fun calcularIVA(): Double = calcularValorTotal() * 0.19
+
+    /**
+     * Representación en String del producto
+     * @return String con la información del producto
+     */
+    override fun toString(): String {
+        return "ID: $id, Nombre: $nombre, Cantidad: $cantidad, Precio: $${"%.2f".format(precio)}, " +
+               "Valor Total: $${"%.2f".format(calcularValorTotal())}, IVA: $${"%.2f".format(calcularIVA())}"
+    }
+}
+
+/**
+ * Clase que representa el inventario de productos
+ */
+class Inventario {
+    private val productos = mutableListOf<Producto>()
+    private var nextId = 1
+
+    /**
+     * Agrega un nuevo producto al inventario
+     * @param nombre Nombre del producto
+     * @param cantidad Cantidad inicial
+     * @param precio Precio unitario
+     */
+    fun agregarProducto(nombre: String, cantidad: Int, precio: Double) {
+        val producto = Producto(nextId++, nombre, cantidad, precio)
+        productos.add(producto)
+        println("Producto agregado exitosamente:\n$producto")
+    }
+
+    /**
+     * Busca un producto por su ID
+     * @param id ID del producto a buscar
+     * @return Producto encontrado o null si no existe
+     */
+    private fun buscarProductoPorId(id: Int): Producto? {
+        return productos.find { it.getId() == id }
+    }
+
+    /**
+     * Lista todos los productos en el inventario
+     */
+    fun listarProductos() {
+        if (productos.isEmpty()) {
+            println("No hay productos en el inventario.")
+            return
+        }
+        println("\n=== LISTA DE PRODUCTOS ===")
+        productos.forEach { println(it) }
+        println("=========================")
+    }
+
+    /**
+     * Actualiza la información de un producto
+     * @param id ID del producto a actualizar
+     * @param nuevoNombre Nuevo nombre (opcional)
+     * @param nuevaCantidad Nueva cantidad (opcional)
+     * @param nuevoPrecio Nuevo precio (opcional)
+     */
+    fun actualizarProducto(
+        id: Int,
+        nuevoNombre: String? = null,
+        nuevaCantidad: Int? = null,
+        nuevoPrecio: Double? = null
+    ) {
+        val producto = buscarProductoPorId(id)
+        if (producto == null) {
+            println("Error: No se encontró un producto con ID $id")
+            return
+        }
+
+        nuevoNombre?.let { producto.setNombre(it) }
+        nuevaCantidad?.let { producto.setCantidad(it) }
+        nuevoPrecio?.let { producto.setPrecio(it) }
+
+        println("Producto actualizado exitosamente:\n$producto")
+    }
+
+    /**
+     * Elimina un producto del inventario
+     * @param id ID del producto a eliminar
+     */
+    fun eliminarProducto(id: Int) {
+        val producto = buscarProductoPorId(id)
+        if (producto == null) {
+            println("Error: No se encontró un producto con ID $id")
+            return
+        }
+
+        productos.remove(producto)
+        println("Producto con ID $id eliminado exitosamente.")
+    }
+
+    /**
+     * Calcula el valor total de todo el inventario
+     * @return Valor total del inventario
+     */
+    fun calcularValorTotalInventario(): Double {
+        return productos.sumOf { it.calcularValorTotal() }
+    }
+
+    /**
+     * Calcula el IVA total de todo el inventario
+     * @return Valor del IVA total
+     */
+    fun calcularIVATotal(): Double {
+        return productos.sumOf { it.calcularIVA() }
+    }
+
+    /**
+     * Muestra un resumen financiero del inventario
+     */
+    fun mostrarResumenFinanciero() {
+        val total = calcularValorTotalInventario()
+        val iva = calcularIVATotal()
+        val totalConIva = total + iva
+
+        println("\n=== RESUMEN FINANCIERO ===")
+        println("Valor total del inventario: $${"%.2f".format(total)}")
+        println("IVA total (19%): $${"%.2f".format(iva)}")
+        println("Total con IVA: $${"%.2f".format(totalConIva)}")
+        println("=========================")
+    }
+}
+
+/**
+ * Función principal que muestra el menú y gestiona la interacción con el usuario
+ */
+fun main() {
+    val scanner = Scanner(System.`in`)
+    val inventario = Inventario()
+
+    while (true) {
+        println("\n=== SISTEMA DE GESTIÓN DE INVENTARIO ===")
+        println("1. Agregar producto")
+        println("2. Listar productos")
+        println("3. Actualizar producto")
+        println("4. Eliminar producto")
+        println("5. Resumen financiero")
+        println("6. Salir")
+        print("Seleccione una opción: ")
+
+        when (scanner.nextLine()) {
+            "1" -> {
+                print("Nombre del producto: ")
+                val nombre = scanner.nextLine()
+                print("Cantidad: ")
+                val cantidad = scanner.nextLine().toIntOrNull() ?: 0
+                print("Precio unitario: ")
+                val precio = scanner.nextLine().toDoubleOrNull() ?: 0.0
+
+                if (nombre.isBlank() || cantidad <= 0 || precio <= 0) {
+                    println("Error: Datos inválidos. Asegúrese de ingresar valores positivos.")
+                    continue
+                }
+
+                inventario.agregarProducto(nombre, cantidad, precio)
+            }
+            "2" -> inventario.listarProductos()
+            "3" -> {
+                print("ID del producto a actualizar: ")
+                val id = scanner.nextLine().toIntOrNull()
+                if (id == null) {
+                    println("Error: ID inválido")
+                    continue
+                }
+
+                print("Nuevo nombre (dejar en blanco para no cambiar): ")
+                val nombre = scanner.nextLine().takeIf { it.isNotBlank() }
+
+                print("Nueva cantidad (dejar en blanco para no cambiar): ")
+                val cantidad = scanner.nextLine().toIntOrNull()
+
+                print("Nuevo precio (dejar en blanco para no cambiar): ")
+                val precio = scanner.nextLine().toDoubleOrNull()
+
+                inventario.actualizarProducto(id, nombre, cantidad, precio)
+            }
+            "4" -> {
+                print("ID del producto a eliminar: ")
+                val id = scanner.nextLine().toIntOrNull()
+                if (id == null) {
+                    println("Error: ID inválido")
+                    continue
+                }
+                inventario.eliminarProducto(id)
+            }
+            "5" -> inventario.mostrarResumenFinanciero()
+            "6" -> {
+                println("Saliendo del sistema...")
+                exitProcess(0)
+            }
+            else -> println("Opción no válida. Por favor, seleccione una opción del 1 al 6.")
+        }
+    }
+}
